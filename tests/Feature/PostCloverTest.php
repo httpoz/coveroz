@@ -25,6 +25,6 @@ class PostCloverTest extends TestCase
 
         $reponse
             ->assertStatus(422)
-            ->assertJsonValidationErrors(['report']);
+            ->assertJsonValidationErrors(['report', 'commit']);
     }
 }

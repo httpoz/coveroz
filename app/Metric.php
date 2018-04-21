@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Metric extends Model
 {
-    protected $fillable = ['files', 'loc', 'ncloc', 'classes', 'methods', 'coveredmethods', 'conditionals',
+    protected $fillable = ['commit', 'files', 'loc', 'ncloc', 'classes', 'methods', 'coveredmethods', 'conditionals',
         'coveredconditionals', 'statements', 'coveredstatements', 'elements', 'coveredelements'];
 
     protected static function boot()

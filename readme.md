@@ -2,8 +2,9 @@
 [![codecov](https://codecov.io/gh/httpoz/coverage/branch/master/graph/badge.svg)](https://codecov.io/gh/httpoz/coverage)
 
 ```bash
-ogdir=$(pwd) && cd build/logs 
-&& curl -X POST path_to_your_application/hooks/e43bb9b0-4451-11e8-a463-b580b565395c/metric -F 'report=@clover.xml' 
+ogdir=$(pwd) 
+&& commit=$(git rev-parse --short HEAD)
+&& cd build/logs 
+&& curl -X POST path_to_your_application/hooks/{your_secret_webhook_id}/metric -F commit=${commit} -F 'report=@clover.xml' 
 && cd $ogdir
-
 ```

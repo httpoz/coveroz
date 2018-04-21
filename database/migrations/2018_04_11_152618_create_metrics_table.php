@@ -15,6 +15,7 @@ class CreateMetricsTable extends Migration
     {
         Schema::create('metrics', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('commit')->unique();
             $table->integer('files');
             $table->integer('loc');
             $table->integer('ncloc');

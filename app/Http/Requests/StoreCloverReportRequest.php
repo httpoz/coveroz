@@ -24,7 +24,8 @@ class StoreCloverReportRequest extends FormRequest
     public function rules()
     {
         return [
-            'report' => 'required|file|mimetypes:text/xml'
+            'report' => 'required|file|mimetypes:text/xml',
+            'commit' => 'required'
         ];
     }
 }
