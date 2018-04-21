@@ -3,6 +3,6 @@
 
 ```curl
 curl -X POST \
-  http://coverage.wip/hooks/{hook-id}/metric \
-  -F 'report=@C:\Users\oscarm\code\coverage\build\logs\clover.xml'
+  http://your_applications_url/hooks/{hook-id}/metric \
+  -F 'report=@your_apps_file_path\build\logs\clover.xml'
 ```
