@@ -1,0 +1,2 @@
+export const LIST_PROJECTS = 'LIST_PROJECTS';
+export const ADD_PROJECT = 'ADD_PROJECT';

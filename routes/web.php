@@ -20,5 +20,9 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::group(['middleware' => 'auth'], function() {
-   Route::resource('projects', 'Projectcontroller');
+   Route::resource('projects', 'ProjectController');
+});
+
+Route::group(['prefix' => 'hooks/{hook}', 'middleware' => 'validateHook'], function(){
+    Route::post('metric', 'PushCloverReportController');
 });
