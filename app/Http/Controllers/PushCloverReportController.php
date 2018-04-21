@@ -15,8 +15,8 @@ class PushCloverReportController extends Controller
 
         $xml = simplexml_load_file($request->file('report'));
 
-        $metrics = $project->metrics()->create(collect($xml->project->metrics->attributes())->toArray());
+        $project->metrics()->create(collect($xml->project->metrics->attributes())->toArray());
 
-        return var_dump($metrics);
+        return response([], 200);
     }
 }
