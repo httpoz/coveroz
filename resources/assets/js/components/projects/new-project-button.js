@@ -1,14 +1,23 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
+import {connect} from 'react-redux';
+import {showProjectForm} from "../../actions/projectActions";
 
-export default class NewProjectButton extends Component {
+class NewProjectButton extends Component {
+    constructor() {
+        super()
+
+        this.showForm = this.showForm.bind(this)
+    }
+
+    showForm () {
+        this.props.showProjectForm();
+    }
+
     render() {
         return (
-            <button className="btn btn-outline-light btn-sm">New Project</button>
+            <button className="btn btn-outline-light btn-sm" onClick={this.showForm}>New Project</button>
         );
     }
 }
 
-if (document.getElementById('new-project-button')) {
-    ReactDOM.render(<NewProjectButton />, document.getElementById('new-project-button'));
-}
+export default connect(null, {showProjectForm})(NewProjectButton)

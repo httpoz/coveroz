@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Project extends Model
 {
+    protected $fillable = ['title', 'hook_id'];
     protected $appends = ['last_reported', 'health'];
 
     public function user()
@@ -29,14 +30,14 @@ class Project extends Model
         $lastMetric = $this->latestMetric();
         $coverage = 0;
         if ($lastMetric) {
-            $coverage = ($lastMetric->coveredstatements / $lastMetric->statements) * 100;
+            $coverage = round(($lastMetric->coveredstatements / $lastMetric->statements) * 100);
         }
 
-        switch ($coverage) {
-            case $coverage >= 90:
+        switch (true) {
+            case ($coverage >= 90):
                 return asset('images/health/high.png');
                 break;
-            case $coverage <= 30:
+            case ($coverage <= 30):
                 return asset('images/health/low.png');
                 break;
             default:

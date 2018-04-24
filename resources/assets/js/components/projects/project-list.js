@@ -17,14 +17,16 @@ class ProjectList extends Component {
                         <th>Health</th>
                         <th>Name</th>
                         <th>Reported</th>
+                        <th></th>
                     </tr>
                     </thead>
                     <tbody>
                     {this.props.projects.map(project =>
-                    <tr>
+                    <tr key={project.id}>
                         <td><img src={project.health} width="36" alt="Project health"/></td>
                         <td>{project.title}</td>
-                        <td>{project.last_reported}</td>
+                        <td>{project.last_reported || 'Never'}</td>
+                        <td className="text-right"><a href={`/projects/${project.id}`} className="btn btn-link">Open</a></td>
                     </tr>
                     )}
                     </tbody>

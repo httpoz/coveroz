@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom';
 import {Provider} from 'react-redux'
 import store from '../../store'
 import ProjectList from './project-list'
+import NewProject from './new-project'
+import NewProjectButton from './new-project-button'
 
 export default class Projects extends Component {
     render() {
@@ -16,7 +18,7 @@ export default class Projects extends Component {
                                     <h5 className="mb-0">Project List</h5>
                                 </div>
                                 <div className="col-sm-4 text-right">
-                                    {/*<div id="new-project-button"></div>*/}
+                                    <NewProjectButton/>
                                 </div>
                             </div>
                         </div>
@@ -24,6 +26,7 @@ export default class Projects extends Component {
                     <div className="container">
                         <div className="row">
                             <div className="col-12">
+                                <NewProject/>
                                 <ProjectList/>
                             </div>
                         </div>

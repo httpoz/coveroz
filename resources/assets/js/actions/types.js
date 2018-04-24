@@ -1,2 +1,3 @@
 export const LIST_PROJECTS = 'LIST_PROJECTS';
 export const ADD_PROJECT = 'ADD_PROJECT';
+export const SHOW_PROJECT_FORM = 'SHOW_PROJECT_FORM';

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreProjectRequest;
+use HttpOz\Hook\Models\Hook;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -13,6 +15,22 @@ class ProjectController extends Controller
         $projects = Auth::user()->projects;
         if ($request->wantsJson()) {
             return new JsonResponse($projects, 200);
-            }
+        }
+    }
+
+    public function store(StoreProjectRequest $request)
+    {
+        $user = Auth::user();
+
+        // Create hook
+        $hook =  new Hook;
+        $hook->name = "{$request->title} hook";
+        $hook->is_active = true;
+        $hook->save();
+
+        // Create project with created hook added to it
+        $project = $user->projects()->create(array_merge(['hook_id' => $hook->id], $request->validated()));
+
+        return new JsonResponse($project, 200);
     }
 }

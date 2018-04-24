@@ -1,4 +1,4 @@
-import {LIST_PROJECTS, ADD_PROJECT} from "./types";
+import {LIST_PROJECTS, ADD_PROJECT, SHOW_PROJECT_FORM} from "./types";
 
 export const listProjects = () => dispatch => {
     axios.get('/projects').then(success => {
@@ -6,5 +6,22 @@ export const listProjects = () => dispatch => {
             type: LIST_PROJECTS,
             payload: success.data
         })
+    })
+}
+
+export const addProject = (project) => dispatch => {
+    axios.post('/projects', project).then(success => {
+        dispatch({
+            type: ADD_PROJECT,
+            payload: success.data
+        })
+        dispatch(LIST_PROJECTS, SHOW_PROJECT_FORM);
+    })
+}
+
+export const showProjectForm = (project = {}) => dispatch => {
+    dispatch({
+        type: SHOW_PROJECT_FORM,
+        payload: project
     })
 }
