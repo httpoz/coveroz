@@ -12,6 +12,7 @@ try {
     window.$ = window.jQuery = require('jquery');
 
     require('bootstrap');
+    window.feather = require('feather-icons');
 } catch (e) {}
 
 /**

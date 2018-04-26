@@ -14,4 +14,7 @@ require('./bootstrap');
  */
 
 require('./components/projects/new-project-button');
-require('./components/projects/projects');
+require('./components/projects/project-page');
+
+
+feather.replace();

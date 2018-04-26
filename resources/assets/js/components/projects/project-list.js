@@ -10,7 +10,7 @@ class ProjectList extends Component {
 
     render() {
         return (
-            <div className="card">
+            <div className="card shadow-sm">
                 <table className="table mb-0">
                     <thead>
                     <tr>

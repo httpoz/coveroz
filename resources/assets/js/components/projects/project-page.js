@@ -6,7 +6,7 @@ import ProjectList from './project-list'
 import NewProject from './new-project'
 import NewProjectButton from './new-project-button'
 
-export default class Projects extends Component {
+export default class ProjectPage extends Component {
     render() {
         return (
             <Provider store={store}>
@@ -37,6 +37,6 @@ export default class Projects extends Component {
     }
 }
 
-if (document.getElementById('projects')) {
-    ReactDOM.render(<Projects/>, document.getElementById('projects'));
+if (document.getElementById('project-page')) {
+    ReactDOM.render(<ProjectPage/>, document.getElementById('project-page'));
 }

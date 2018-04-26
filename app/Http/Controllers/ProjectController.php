@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreProjectRequest;
+use App\Project;
 use HttpOz\Hook\Models\Hook;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -32,5 +33,12 @@ class ProjectController extends Controller
         $project = $user->projects()->create(array_merge(['hook_id' => $hook->id], $request->validated()));
 
         return new JsonResponse($project, 200);
+    }
+
+    public function show(Project $project)
+    {
+        Auth::user()->can('view', $project);
+
+        return view('projects.show', ['project' => $project]);
     }
 }

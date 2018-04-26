@@ -11,18 +11,24 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// Authentication
+Route::get('auth/{provider}', 'Auth\LoginController@redirectToProvider');
+Route::get('auth/{provider}/callback', 'Auth\LoginController@handleProviderCallback');
+Route::post('logout', 'Auth\LoginController@logout')->name('logout');
+
+
+// Landing
 Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
-
+// App
 Route::group(['middleware' => 'auth'], function() {
+    Route::get('/home', 'HomeController@index')->name('home');
    Route::resource('projects', 'ProjectController');
 });
 
+// Coverage report
 Route::group(['prefix' => 'hooks/{hook}', 'middleware' => 'validateHook'], function(){
     Route::post('metric', 'PushCloverReportController');
 });

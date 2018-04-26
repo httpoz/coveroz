@@ -42,4 +42,15 @@ class ProjectWorkFlowTest extends TestCase
         $this->assertEquals(1, $user->projects()->count());
         $this->assertEquals(Hook::first()->id, $project->hook_id);
     }
+
+    public function testViewProject()
+    {
+        $user = factory(User::class)->create();
+        $project = $user->projects()->create(['title' => 'Test']);
+
+        $response = $this->actingAs($user)->get("/projects/{$project->id}");
+
+        $response->assertStatus(200);
+        $response->assertViewHas('project');
+    }
 }

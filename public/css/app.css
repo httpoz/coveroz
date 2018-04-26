@@ -10389,14 +10389,106 @@ a.text-dark:focus {
   }
 }
 
-.navbar-laravel {
-  background-color: #fff;
-  -webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
-          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+html {
+  height: 100%;
 }
 
 img {
   max-width: 100%;
   height: auto;
+}
+
+.ribbon {
+  background-color: #1f8bff;
+}
+
+/*
+ * Base structure
+ */
+
+.landing {
+  display: -ms-flexbox;
+  display: -webkit-box;
+  display: flex;
+  background-color: #333;
+  background-image: url(/images/login.jpg?64124d9051d8505600e3c5e116c20617);
+  background-size: cover;
+  background-position: center 60%;
+  color: #fff;
+  height: 100%;
+  text-shadow: 0 0.05rem 0.1rem rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: inset 0 0 5rem rgba(0, 0, 0, 0.5);
+          box-shadow: inset 0 0 5rem rgba(0, 0, 0, 0.5);
+  /*
+   * Header
+   */
+  /*
+   * Cover
+   */
+  /*
+   * Footer
+   */
+}
+
+.landing:before {
+  content: '';
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.1);
+  z-index: -1;
+}
+
+.landing .cover-container {
+  max-width: 42em;
+}
+
+.landing .masthead {
+  margin-bottom: 2rem;
+}
+
+.landing .masthead-brand {
+  margin-bottom: 0;
+}
+
+.landing .nav-masthead .nav-link {
+  padding: .25rem 0;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.5);
+  background-color: transparent;
+  border-bottom: .25rem solid transparent;
+}
+
+.landing .nav-masthead .nav-link:hover,
+.landing .nav-masthead .nav-link:focus {
+  border-bottom-color: rgba(255, 255, 255, 0.25);
+}
+
+.landing .nav-masthead .nav-link.active {
+  color: #fff;
+  border-bottom-color: #fff;
+}
+
+.landing .nav-masthead .nav-link + .nav-link {
+  margin-left: 1rem;
+}
+
+@media (min-width: 48em) {
+  .landing .nav-masthead {
+    float: right;
+  }
+}
+
+.landing .cover {
+  padding: 0 1.5rem;
+}
+
+.landing .cover a > img {
+  max-width: 250px;
+  height: auto;
+}
+
+.landing .mastfoot {
+  color: rgba(255, 255, 255, 0.9);
 }
 
