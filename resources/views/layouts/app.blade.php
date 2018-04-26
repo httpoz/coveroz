@@ -20,7 +20,7 @@
     <!-- Styles -->
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
 </head>
-<body>
+<body class="pb-5">
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-dark bg-primary navbar-laravel">
             <div class="container">

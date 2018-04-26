@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Project extends Model
 {
     protected $fillable = ['title', 'hook_id'];
-    protected $appends = ['last_reported', 'health'];
+    protected $appends = ['last_reported', 'health', 'health_img'];
 
     public function user()
     {
@@ -25,19 +25,21 @@ class Project extends Model
         return ($lastMetric) ? $lastMetric->created_at->diffForHumans() : null;
     }
 
-    public function getHealthAttribute()
+    public function getHealthAttribute() : float
     {
-        $lastMetric = $this->latestMetric();
-        $coverage = 0;
-        if ($lastMetric) {
-            $coverage = round(($lastMetric->coveredstatements / $lastMetric->statements) * 100);
-        }
+        return $this->healthPercentage();
 
+
+    }
+
+    public function getHealthImgAttribute()
+    {
+        $coverage = $this->healthPercentage();
         switch (true) {
             case ($coverage >= 90):
                 return asset('images/health/high.png');
                 break;
-            case ($coverage <= 30):
+            case ($coverage <= 40):
                 return asset('images/health/low.png');
                 break;
             default:
@@ -49,5 +51,16 @@ class Project extends Model
     private function latestMetric()
     {
         return $this->metrics()->first();
+    }
+
+    private function healthPercentage(): float
+    {
+        $lastMetric = $this->latestMetric();
+        $coverage = 0;
+        if ($lastMetric) {
+            $coverage = round(($lastMetric->coveredstatements / $lastMetric->statements) * 100, 2);
+        }
+
+        return $coverage;
     }
 }

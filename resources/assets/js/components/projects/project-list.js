@@ -23,7 +23,7 @@ class ProjectList extends Component {
                     <tbody>
                     {this.props.projects.map(project =>
                     <tr key={project.id}>
-                        <td><img src={project.health} width="36" alt="Project health"/></td>
+                        <td><img src={project.health_img} width="36" alt="Project health"/></td>
                         <td>{project.title}</td>
                         <td>{project.last_reported || 'Never'}</td>
                         <td className="text-right"><a href={`/projects/${project.id}`} className="btn btn-link">Open</a></td>

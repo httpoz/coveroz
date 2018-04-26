@@ -37,7 +37,7 @@ class NewProject extends Component {
                 <Dialog.Body>
                     <form onSubmit={this.saveProject}>
                         <div className="form-group">
-                            <input name="title" value={this.state.title} onChange={this.onChange}
+                            <input name="title" value={this.state.title} onChange={this.onChange} autoFocus
                                    className="form-control"/>
                         </div>
                         <div className="text-right">

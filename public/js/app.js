@@ -97833,7 +97833,8 @@ var addProject = function addProject(project) {
                 type: __WEBPACK_IMPORTED_MODULE_0__types__["a" /* ADD_PROJECT */],
                 payload: success.data
             });
-            dispatch(__WEBPACK_IMPORTED_MODULE_0__types__["b" /* LIST_PROJECTS */], __WEBPACK_IMPORTED_MODULE_0__types__["c" /* SHOW_PROJECT_FORM */]);
+            dispatch(showProjectForm());
+            dispatch(listProjects());
         });
     };
 };
@@ -98085,7 +98086,7 @@ var NewProject = function (_Component) {
                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                             'div',
                             { className: 'form-group' },
-                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { name: 'title', value: this.state.title, onChange: this.onChange,
+                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { name: 'title', value: this.state.title, onChange: this.onChange, autoFocus: true,
                                 className: 'form-control' })
                         ),
                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
@@ -98195,7 +98196,7 @@ var ProjectList = function (_Component) {
                                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                                     'td',
                                     null,
-                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('img', { src: project.health, width: '36', alt: 'Project health' })
+                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('img', { src: project.health_img, width: '36', alt: 'Project health' })
                                 ),
                                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                                     'td',

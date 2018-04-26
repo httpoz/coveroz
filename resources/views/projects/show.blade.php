@@ -6,7 +6,7 @@
             <div class="row">
                 <div class="col-10 align-items-center">
                     <h3 class="mb-0">
-                        <img src="{{ $project->health }}" width="48" alt="project health">
+                        <img src="{{ $project->health_img }}" width="48" alt="project health">
                         {{ $project->title }}</h3>
                 </div>
             </div>
@@ -18,7 +18,7 @@
                 <div class="card">
                     <div class="card-body">
                         <p>Run this curl script in one of your CI stages, ideally after tests pass.</p>
-                        <code>$ bash <(curl -s https://coverage-oz.herokuapp.com/bash) {{ $project->hook_id }}</code>
+                        <code>$ bash <(curl -s https://coveroz.herokuapp.com/bash) {{ $project->hook_id }}</code>
                     </div>
                 </div>
             </div>

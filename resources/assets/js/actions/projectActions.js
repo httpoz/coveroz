@@ -15,7 +15,8 @@ export const addProject = (project) => dispatch => {
             type: ADD_PROJECT,
             payload: success.data
         })
-        dispatch(LIST_PROJECTS, SHOW_PROJECT_FORM);
+        dispatch(showProjectForm());
+        dispatch(listProjects());
     })
 }
 
