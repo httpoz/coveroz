@@ -4,29 +4,38 @@ import {connect} from 'react-redux'
 import {listProjects} from '../../actions/projectActions'
 
 class ProjectList extends Component {
+
     componentWillMount() {
         this.props.listProjects();
+    }
+
+    openProject (project) {
+        window.location=`/projects/${project}`
     }
 
     render() {
         return (
             <div className="card shadow-sm">
-                <table className="table mb-0">
+                <table className="table table-hover mb-0">
                     <thead>
-                    <tr>
+                    <tr className="text-uppercase">
                         <th>Health</th>
+                        <th>Coverage</th>
+                        <th>Run</th>
                         <th>Name</th>
+                        <th>Commit</th>
                         <th>Reported</th>
-                        <th></th>
                     </tr>
                     </thead>
                     <tbody>
                     {this.props.projects.map(project =>
-                    <tr key={project.id}>
+                    <tr key={project.id} onClick={() => {this.openProject(project.id)}} className={(project.health < 40) ? 'bg-danger text-white' : ''}>
                         <td><img src={project.health_img} width="36" alt="Project health"/></td>
+                        <td>{project.health}%</td>
+                        <td>{project.metrics_count}</td>
                         <td>{project.title}</td>
+                        <th>{project.last_commit}</th>
                         <td>{project.last_reported || 'Never'}</td>
-                        <td className="text-right"><a href={`/projects/${project.id}`} className="btn btn-link">Open</a></td>
                     </tr>
                     )}
                     </tbody>

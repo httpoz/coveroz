@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Project extends Model
 {
     protected $fillable = ['title', 'hook_id'];
-    protected $appends = ['last_reported', 'health', 'health_img'];
+    protected $appends = ['last_reported', 'last_commit', 'health', 'health_img'];
 
     public function user()
     {
@@ -22,7 +22,13 @@ class Project extends Model
     public function getLastReportedAttribute()
     {
         $lastMetric = $this->latestMetric();
-        return ($lastMetric) ? $lastMetric->created_at->diffForHumans() : null;
+        return ($lastMetric) ? $lastMetric->created_at->diffForHumans() : '-';
+    }
+
+    public function getLastCommitAttribute()
+    {
+        $lastMetric = $this->latestMetric();
+        return ($lastMetric) ? $lastMetric->commit : '-';
     }
 
     public function getHealthAttribute() : float
