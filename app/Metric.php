@@ -14,7 +14,7 @@ class Metric extends Model
     {
         parent::boot();
         static::addGlobalScope('order', function (Builder $builder) {
-            $builder->orderBy('created_at', 'desc');
+            $builder->orderByDesc('id');
         });
     }
 
