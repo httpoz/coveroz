@@ -13,7 +13,7 @@ class ProjectController extends Controller
 {
     public function index(Request $request)
     {
-        $projects = Auth::user()->projects()->withCount('metrics')->get();
+        $projects = Auth::user()->projects()->get();
         if ($request->wantsJson()) {
             return new JsonResponse($projects, 200);
         }

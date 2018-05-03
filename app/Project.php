@@ -2,12 +2,21 @@
 
 namespace App;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 
 class Project extends Model
 {
     protected $fillable = ['title', 'hook_id'];
     protected $appends = ['last_reported', 'last_commit', 'health', 'health_img'];
+
+    protected static function boot()
+    {
+        parent::boot();
+        static::addGlobalScope('order', function (Builder $builder) {
+            $builder->orderByDesc('id');
+        });
+    }
 
     public function user()
     {
